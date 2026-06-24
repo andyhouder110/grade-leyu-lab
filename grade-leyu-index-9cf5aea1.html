@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>leyu · 信息对照与延伸阅读</title>
+    <style>
+        /* reset & base */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f1f8f9;
+            color: #1e2c2b;
+            line-height: 1.6;
+            padding: 0 1.2rem 3rem;
+        }
+        a {
+            color: #1f7b7a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        a:hover, a:focus {
+            border-bottom-color: #1f7b7a;
+        }
+
+        /* layout container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            padding: 3rem 0 1.8rem;
+            text-align: left;
+            border-bottom: 2px solid #cce3e3;
+            margin-bottom: 2.2rem;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0c4a4a;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.4rem 0.2rem;
+        }
+        .hero h1 small {
+            font-size: 1.1rem;
+            font-weight: 350;
+            color: #3f6b6a;
+            margin-left: 0.3rem;
+        }
+        .hero p {
+            margin-top: 0.8rem;
+            font-size: 1.1rem;
+            color: #2e4f4e;
+            max-width: 80%;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { max-width: 100%; font-size: 1rem; }
+        }
+
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.4rem 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 6px 14px rgba(20, 56, 55, 0.04), 0 2px 4px rgba(0,40,40,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #d9edec;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(15, 70, 70, 0.06);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0b4f4e;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 1.4em;
+            background: #51b5b2;
+            border-radius: 12px;
+        }
+        .card p, .card ul {
+            font-size: 0.95rem;
+            color: #2a4241;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+        .card li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #3ca09d;
+            font-weight: 700;
+        }
+
+        /* 两栏特殊处理 */
+        @media (max-width: 640px) {
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 1.5rem 1.2rem; }
+        }
+
+        /* 场景 + 使用建议 用单个宽卡片带内网格 */
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 2rem 0;
+            border: 1px solid #d9edec;
+            box-shadow: 0 4px 12px rgba(10,55,55,0.03);
+        }
+        .feature-card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #074b4a;
+            letter-spacing: -0.01em;
+            border-left: 5px solid #51b5b2;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .mini-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+        .mini-grid .item h4 {
+            font-size: 1.1rem;
+            font-weight: 470;
+            color: #185c5b;
+            margin-bottom: 0.4rem;
+        }
+        .mini-grid .item p {
+            color: #2f514f;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 540px) {
+            .mini-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .feature-card { padding: 1.5rem; }
+        }
+
+        /* 提示 / 说明 区块 */
+        .note-box {
+            background: #e5f3f2;
+            border-radius: 32px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 2.4rem;
+            border: 1px solid #b3d6d4;
+        }
+        .note-box p {
+            font-size: 0.98rem;
+            color: #1a4241;
+            margin-bottom: 0.5rem;
+        }
+        .note-box p:last-child { margin-bottom: 0; }
+        .note-box strong {
+            color: #0b5f5d;
+            font-weight: 550;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            border: 1px solid #d4eae9;
+            margin: 2rem 0 1.5rem;
+        }
+        .faq-item {
+            padding: 0.3rem 0;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #0d4d4c;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+        .faq-item .a {
+            color: #345857;
+            font-size: 0.92rem;
+            padding-left: 1.2rem;
+            border-left: 2px solid #a7d0ce;
+            margin-top: 0.1rem;
+        }
+
+        /* 链接自然嵌入 */
+        .inline-link {
+            color: #1b7d7a;
+            font-weight: 450;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b5d5d3, transparent);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #587775;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        /* 点缀小元素 */
+        .badge-muted {
+            background: #d5edeb;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #1d6c6a;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>leyu<small> · 信息对照与延伸</small></h1>
+        <p>在信息碎片里，<a href="https://grade-leyu.com.cn">leyu</a> 为一组常见查询需求提供了一种轻量、可回溯的对照方式。不只检索，更偏向于条目化比照与细节展开。</p>
+    </div>
+
+    <!-- 卡片网格：摘要+亮点 -->
+    <div class="grid">
+        <div class="card">
+            <h3>摘要</h3>
+            <p>日常工作中，我们经常需要把零散的数据、版本说明或属性参数放在一起反复比对。<a href="https://grade-leyu.com.cn" class="inline-link">leyu</a> 面向这类场景，按条目组织内容，便于快速定位差异和共项。页面结构偏平，减少跳转层级，适合在查阅时保持上下文。</p>
+        </div>
+        <div class="card">
+            <h3>几点亮点</h3>
+            <ul>
+                <li>条目化呈现 · 减少非必要视觉干扰</li>
+                <li>直接对照 · 无需滚动多个独立页面</li>
+                <li>轻量响应 · 移动端阅读适配良好</li>
+                <li>信息密度适中 · 鼓励延伸阅读而非机械刷新</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 使用建议 & 场景融合 -->
+    <div class="feature-card">
+        <h2>常见使用方向</h2>
+        <div class="mini-grid">
+            <div class="item">
+                <h4>日常参照</h4>
+                <p>当你在处理文档、核对配置或做横向对比时，<a href="https://grade-leyu.com.cn">leyu</a> 可以把相关项集中在一处，避免反复切换标签页。例如版本号、参数范围或术语说明。</p>
+            </div>
+            <div class="item">
+                <h4>延伸阅读</h4>
+                <p>对于某些非标准概念或需要上下文支撑的条目，站点内会给出适度展开。你可以顺着内容脉络进一步了解背景，而不是孤立地面对一个结论。</p>
+            </div>
+            <div class="item">
+                <h4>移动场景</h4>
+                <p>在手机或平板上，卡片与列表自动重排，阅读区域聚焦于条目本身。符合通勤、间隙时间的信息摘取习惯。</p>
+            </div>
+            <div class="item">
+                <h4>对照检查</h4>
+                <p>将不同来源的数据摆在一起，通过并列卡片快速识别不一致之处。适合复核、校对信息时作为辅助参考。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 可信但克制的说明 -->
+    <div class="note-box">
+        <p><strong>关于信息参考</strong> —— <a href="https://grade-leyu.com.cn">leyu</a> 所呈现的内容均基于公开可查的材料或普遍认知整理而成。站点本身不提供绝对结论，也不替代专业判断。建议在重要决策前，交叉对比更权威或更新的来源。</p>
+        <p style="margin-top:0.6rem;">访问时请根据自身需要筛选条目，保持对信息时效性的合理预期。</p>
+    </div>
+
+    <!-- FAQ 摘要 (克制风格) -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <span class="q">Q：这个站点适合快速查找具体数字吗？</span>
+            <span class="a">部分条目直接列出数值或状态，适合速览；但更侧重条目间的关系，而非单一数值数据库。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：内容多久更新一次？</span>
+            <span class="a">没有固定周期。信息来源变化时可能会做调整，建议以站点实际显示为准。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：能否用于教学或培训场景？</span>
+            <span class="a">可以作为对照素材之一，但最好与一手资料搭配使用。具体场景自行评估。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：为什么叫 leyu ？</span>
+            <span class="a">命名取自项目代号，无特殊含义。你可以把它当作一个便于记忆的标识。</span>
+        </div>
+    </div>
+
+    <!-- 简短收尾 + 再次自然链接 -->
+    <hr>
+    <p style="margin: 1rem 0 0.8rem; font-size: 0.95rem; color: #3f6261;">
+        如果你在寻找一个条目集中、便于横向浏览的参照页面，<a href="https://grade-leyu.com.cn">leyu</a> 可能刚好符合你的习惯。
+        无论是核对细节还是纯粹为了延伸阅读，都值得花几分钟熟悉它的组织方式。
+    </p>
+
+    <div class="footer-note">
+        <span class="badge-muted">信息参考 · 非结论性</span>
+        <span style="margin: 0 0.6rem;">·</span>
+        内容持续微调，以实际页面为准
+    </div>
+
+</div>
+</body>
+</html>
