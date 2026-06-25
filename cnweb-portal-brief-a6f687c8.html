@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息入口 · 500彩票网官方知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f0e8;
+            font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+            line-height: 1.75;
+            color: #2d2a24;
+            padding: 2rem 1.5rem;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #fcfaf6;
+            padding: 2.5rem 2rem 3rem;
+            border-radius: 2px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            border-left: 4px solid #b8a58e;
+            padding-left: 1.2rem;
+            margin-bottom: 1.8rem;
+            color: #3b352e;
+        }
+
+        .subhead {
+            font-size: 0.95rem;
+            color: #80766a;
+            margin-top: -1rem;
+            margin-bottom: 2.2rem;
+            padding-left: 1.6rem;
+            border-bottom: 1px solid #e6ddd2;
+            padding-bottom: 1rem;
+        }
+
+        .intro-card {
+            background: #f3ede6;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2rem;
+            border-radius: 1px;
+            border-left: 6px solid #cbb89f;
+        }
+
+        .intro-card p {
+            margin-bottom: 0.6rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .dir-item {
+            background: #fffcf8;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e3dad0;
+            border-radius: 1px;
+            transition: background 0.2s;
+        }
+
+        .dir-item:hover {
+            background: #f6f0e8;
+        }
+
+        .dir-item strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4c4238;
+            margin-bottom: 0.3rem;
+        }
+
+        .dir-item .meta {
+            font-size: 0.85rem;
+            color: #7f7468;
+        }
+
+        .notice-block {
+            background: #f4f0ea;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0 1.8rem;
+            border: 1px dashed #c9bcaa;
+            position: relative;
+        }
+
+        .notice-block::before {
+            content: "📌 提示";
+            position: absolute;
+            top: -0.7rem;
+            left: 1rem;
+            background: #fcfaf6;
+            padding: 0 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #7c6f5e;
+            letter-spacing: 0.04em;
+        }
+
+        .notice-block p {
+            font-size: 0.95rem;
+        }
+
+        .related-area {
+            margin: 2.5rem 0 1.2rem;
+            border-top: 1px solid #e2d7ca;
+            padding-top: 1.8rem;
+        }
+
+        .related-area h3 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #4f463b;
+            margin-bottom: 0.8rem;
+        }
+
+        .related-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .related-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted #ddd3c6;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .related-list li::before {
+            content: "·";
+            color: #b8a58e;
+            font-weight: 700;
+            margin-right: 0.3rem;
+        }
+
+        .link-inline {
+            color: #7d6b55;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 0.5px;
+            text-decoration-color: #cbb89f;
+            transition: color 0.2s;
+        }
+
+        .link-inline:hover {
+            color: #a5835e;
+            text-decoration-color: #a5835e;
+        }
+
+        .faq-mini {
+            margin: 2.2rem 0;
+            background: #f9f5ee;
+            padding: 1.2rem 1.6rem;
+        }
+
+        .faq-mini dt {
+            font-weight: 600;
+            color: #4f4439;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini dt:first-of-type {
+            margin-top: 0;
+        }
+
+        .faq-mini dd {
+            margin-left: 0.2rem;
+            font-size: 0.9rem;
+            color: #5f5549;
+            border-left: 2px solid #dad0c2;
+            padding-left: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #9b8f7f;
+            text-align: right;
+            border-top: 1px solid #e6ddd2;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page {
+                padding: 1.8rem 1.2rem 2.2rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+                padding-left: 0.8rem;
+            }
+            .directory-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+            .intro-card {
+                padding: 1rem 1.2rem;
+            }
+            .notice-block {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>知识库 · 持续关注</h1>
+    <div class="subhead">再次收藏 & 定期回访 · 信息聚合入口</div>
+
+    <div class="intro-card">
+        <p>对于经常查阅资讯与数据的访问者而言，稳定的信息来源与快捷的入口同样重要。此页面作为集结索引，帮助你在不同时段、不同设备上快速定位到 <a href="https://cnweb-portal-500.com" class="link-inline">500彩票网官方</a> 所承载的核心内容板块。</p>
+        <p>重新访问时，可依据下方分类直达感兴趣的模块；若尚未添加书签，建议将此页收入浏览器收藏夹，便于持续跟进动态。</p>
+    </div>
+
+    <div class="directory-grid">
+        <div class="dir-item">
+            <strong>数据总览</strong>
+            <span class="meta">历史走势 · 实时比率 · 排列组合</span>
+        </div>
+        <div class="dir-item">
+            <strong>专题分析</strong>
+            <span class="meta">赛事统计 · 数字频率 · 周期复盘</span>
+        </div>
+        <div class="dir-item">
+            <strong>资讯摘要</strong>
+            <span class="meta">行业公告 · 规则更新 · 政策说明</span>
+        </div>
+        <div class="dir-item">
+            <strong>工具集</strong>
+            <span class="meta">计算器 · 筛选器 · 记录模板</span>
+        </div>
+    </div>
+
+    <div class="notice-block">
+        <p>若长时间未访问，建议先通过 <a href="https://cnweb-portal-500.com" class="link-inline">500彩票网官方</a> 确认界面与功能模块是否有调整，以免因改版导致收藏路径失效。部分交互页面可能需登录后可见，请留意浏览器状态。</p>
+    </div>
+
+    <div class="related-area">
+        <h3>相关信息区</h3>
+        <ul class="related-list">
+            <li>版本迭代记录 · 功能变更说明（每季度更新）</li>
+            <li>常见访问问题：页面加载、缓存清理、移动端适配</li>
+            <li>内容来源：数据接口及第三方合作方摘要</li>
+            <li>安全提示：仅通过官方域名浏览，核对地址栏信息</li>
+        </ul>
+    </div>
+
+    <div class="faq-mini">
+        <dl>
+            <dt>Q：为何需要收藏此入口页？</dt>
+            <dd>A：本页聚合了常用板块的索引，避免每次从首页逐级导航；同时记录关键更新提醒，减少遗漏。</dd>
+            <dt>Q：能否通过此页直接使用所有功能？</dt>
+            <dd>A：本页定位为索引与知识库，具体交互仍需跳转至对应功能页面。建议在熟悉各模块位置后，将常用页面单独收藏。</dd>
+            <dt>Q：官方是否会变动域名或入口？</dt>
+            <dd>A：目前统一使用 <a href="https://cnweb-portal-500.com" class="link-inline">500彩票网官方</a> 作为主站域名。如有变化，将在本区公告。</dd>
+        </dl>
+    </div>
+
+    <div class="footer-note">
+        信息整理于知识库 · 建议每季度复查索引有效性
+    </div>
+</div>
+</body>
+</html>
